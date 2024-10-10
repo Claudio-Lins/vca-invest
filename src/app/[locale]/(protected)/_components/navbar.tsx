@@ -2,6 +2,8 @@
 
 import { LogoutButton } from '@/components/auth/logout-button'
 import { UserButton } from '@/components/auth/user-button'
+import { LocaleSwitcher } from '@/components/locale-switcher'
+import { SwitcherLocale } from '@/components/switcher-locale'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
@@ -41,6 +43,7 @@ export function Navbar({}: NavbarProps) {
 				</Button>
 			</div>
 			<UserButton />
+			<LocaleSwitcher />
 		</nav>
 	)
 }

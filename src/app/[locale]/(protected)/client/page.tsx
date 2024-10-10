@@ -3,7 +3,7 @@
 import { UserInfo } from '@/components/user-info'
 import { currentUser } from '@/lib/auth'
 import { cn } from '@/lib/utils'
-import { useCurrentUser } from '../../../../hooks/use-current-user'
+import { useCurrentUser } from '../../../../../hooks/use-current-user'
 
 interface ClientPageProps {}
 

@@ -4,13 +4,9 @@ import { RoleGate } from '@/components/auth/role-gate'
 import { FormSuccess } from '@/components/form-success'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { UserInfo } from '@/components/user-info'
-import { UserCurrentRole } from '@/hooks/use-current-role'
-import { currentRole, currentUser } from '@/lib/auth'
 import { cn } from '@/lib/utils'
 import { UserRole } from '@prisma/client'
 import { toast } from 'sonner'
-import { useCurrentUser } from '../../../../hooks/use-current-user'
 
 interface AdminPageProps {}
 

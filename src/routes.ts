@@ -1,14 +1,14 @@
+// src/routes.ts
+
 /**
- * An Array of routes that are accessible to the public
- * These routes do not require authentication
- * @type {string[]}
+ * Um array de rotas públicas
+ * Essas rotas não requerem autenticação
  */
 export const publicRoutes = ['/', '/auth/new-verification']
 
 /**
- * An Array of routes that are used for authentication
- * These routes will redirect logged users to  /settings endpoint
- * @type {string[]}
+ * Um array de rotas de autenticação
+ * Essas rotas irão redirecionar usuários logados para /settings
  */
 export const authRoutes = [
 	'/auth/login',
@@ -19,14 +19,12 @@ export const authRoutes = [
 ]
 
 /**
- * The prefix used to access the API authorization routes
- * Routes that start with this prefix are used for API authentication purposes
- * @type {string}
+ * Prefixo usado para acessar rotas de autorização da API
+ * Rotas que começam com este prefixo são usadas para fins de autenticação de API
  */
 export const apiAuthPrefix = '/api/auth'
 
 /**
- * The default redirect route after a successful login
- * @type {string[]}
+ * Rota padrão de redirecionamento após um login bem-sucedido
  */
 export const DEFAULT_LOGIN_REDIRECT = '/settings'

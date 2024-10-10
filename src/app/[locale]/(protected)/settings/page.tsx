@@ -32,7 +32,7 @@ import {
 import { Switch } from '@/components/ui/switch'
 import { cn } from '@/lib/utils'
 import { SettingsSchema } from '@/schemas'
-import { useCurrentUser } from '../../../../hooks/use-current-user'
+import { useCurrentUser } from '../../../../../hooks/use-current-user'
 
 export default function SettingsPage() {
 	const user = useCurrentUser()

@@ -30,9 +30,15 @@
 		"enabled": true,
 		"rules": {
 			"recommended": true,
-			"a11y": { "useKeyWithClickEvents": "off" },
-			"suspicious": { "noEmptyInterface": "off" },
-			"correctness": { "noEmptyPattern": "off" }
+			"a11y": {
+				"useKeyWithClickEvents": "off",
+				"noLabelWithoutControl": "off"
+			},
+			"suspicious": { "noEmptyInterface": "off", "noExplicitAny": "off" },
+			"correctness": {
+				"noEmptyPattern": "off",
+				"useExhaustiveDependencies": "off"
+			}
 		}
 	}
 }
