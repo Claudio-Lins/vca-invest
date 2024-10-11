@@ -25,9 +25,13 @@ export default async function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-			<Toaster />
-			{children}
-		</body>
+		<html lang='en'>
+			<body
+				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+			>
+				<Toaster />
+				{children}
+			</body>
+		</html>
 	)
 }
