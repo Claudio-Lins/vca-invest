@@ -49,7 +49,8 @@ export default function SettingsPage() {
 			newPassword: undefined,
 			name: user?.name || undefined,
 			email: user?.email || undefined,
-			role: user?.role || undefined,
+			role:
+				user?.role === 'ADMIN' || user?.role === 'USER' ? user.role : undefined,
 			isTwoFactorEnabled: user?.isTwoFactorEnabled || undefined,
 		},
 	})
