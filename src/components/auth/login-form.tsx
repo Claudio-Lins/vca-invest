@@ -77,7 +77,7 @@ export function LoginForm({}: LoginFormProps) {
 			headerLabel='Welcome Back'
 			backButtonLabel='Do not have a account? '
 			backButtonHref='/auth/register'
-			showSocial={true}
+			showSocial={false}
 		>
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-6'>
