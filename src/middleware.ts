@@ -1,4 +1,4 @@
-// src/middleware.ts
+import { NextResponse } from 'next/server'
 
 import {
 	DEFAULT_LOGIN_REDIRECT,
@@ -22,6 +22,19 @@ export default auth((req) => {
 	const isApiAuthRouter = pathname.startsWith(apiAuthPrefix)
 	const isPublicRoute = publicRoutes.includes(pathname)
 	const isAuthRoute = authRoutes.includes(pathname)
+
+	const blockedPaths = [
+		'/wp-login.php',
+		'/wp-admin',
+		'/wp-content',
+		'/wp-includes',
+		'.php',
+		'/cgi-bin',
+	]
+
+	if (blockedPaths.some((path) => pathname.includes(path))) {
+		return NextResponse.redirect(new URL('/404', req.url))
+	}
 
 	// Permitir rotas públicas e rotas de autenticação
 	if (

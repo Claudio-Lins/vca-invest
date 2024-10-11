@@ -34,7 +34,11 @@
 				"useKeyWithClickEvents": "off",
 				"noLabelWithoutControl": "off"
 			},
-			"suspicious": { "noEmptyInterface": "off", "noExplicitAny": "off" },
+			"suspicious": {
+				"noEmptyInterface": "off",
+				"noExplicitAny": "off",
+				"noShadowRestrictedNames": "off"
+			},
 			"correctness": {
 				"noEmptyPattern": "off",
 				"useExhaustiveDependencies": "off"
