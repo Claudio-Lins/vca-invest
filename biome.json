@@ -32,7 +32,8 @@
 			"recommended": true,
 			"a11y": {
 				"useKeyWithClickEvents": "off",
-				"noLabelWithoutControl": "off"
+				"noLabelWithoutControl": "off",
+				"useHtmlLang": "off"
 			},
 			"suspicious": {
 				"noEmptyInterface": "off",

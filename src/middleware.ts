@@ -6,6 +6,7 @@ import {
 	DEFAULT_LOGIN_REDIRECT,
 	apiAuthPrefix,
 	authRoutes,
+	protectedRoutes,
 	publicRoutes,
 } from '@/routes'
 import NextAuth from 'next-auth'
@@ -27,11 +28,21 @@ export default auth((req) => {
 	const isPublicRoute = publicRoutes.includes(pathname)
 	const isAuthRoute = authRoutes.includes(pathname)
 
+	console.log(isLoggedIn)
+
 	// Verificar se o pathname já começa com um locale válido
 	const localePattern = /^\/(en|pt|ch|ar)\b/
 	if (!localePattern.test(pathname)) {
 		// Redirecionar para o locale padrão se o pathname não começar com um locale
 		return NextResponse.redirect(new URL(`/${locale}${pathname}`, req.url))
+	}
+
+	// Redirecionar usuários logados para /admin ao tentar acessar rotas de autenticação
+	if (
+		isLoggedIn &&
+		authRoutes.some((route) => pathname.startsWith(`/${locale}${route}`))
+	) {
+		return NextResponse.redirect(new URL(`/${locale}/admin`, nextUrl)) // Redireciona para /admin
 	}
 
 	// Permitir rotas públicas e rotas de autenticação
@@ -43,13 +54,11 @@ export default auth((req) => {
 		return undefined
 	}
 
-	// Redirecionar usuários logados para o redirecionamento padrão ao tentar acessar rotas de autenticação
-	if (isAuthRoute && isLoggedIn) {
-		return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl))
-	}
-
-	// Redirecionar para a página de login se não estiver autenticado e a rota não for pública
-	if (!isLoggedIn && pathname.startsWith(`/${locale}/(protected)`)) {
+	// Redirecionar para a página de login se não estiver autenticado e a rota for protegida
+	if (
+		!isLoggedIn &&
+		protectedRoutes.some((route) => pathname.startsWith(`/${locale}${route}`))
+	) {
 		return NextResponse.redirect(new URL(`/${locale}/auth/login`, nextUrl))
 	}
 
