@@ -6,9 +6,10 @@ import { useRouter } from 'next/navigation'
 
 interface LogoutButtonProps {
 	children: React.ReactNode
+	asChild?: boolean
 }
 
-export function LogoutButton({ children }: LogoutButtonProps) {
+export function LogoutButton({ children, asChild }: LogoutButtonProps) {
 	const router = useRouter()
 
 	function handleSingOut() {
