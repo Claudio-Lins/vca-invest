@@ -64,7 +64,7 @@ export function RegisterForm({}: RegisterFormProps) {
 			headerLabel='Create a account'
 			backButtonLabel='Already have a account? '
 			backButtonHref='/auth/login'
-			showSocial={true}
+			showSocial={false}
 		>
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)} className='space-y-6'>
@@ -76,7 +76,12 @@ export function RegisterForm({}: RegisterFormProps) {
 								<FormItem>
 									<FormLabel>Full name</FormLabel>
 									<FormControl>
-										<Input {...field} type='text' placeholder='John Doe' disabled={isPending} />
+										<Input
+											{...field}
+											type='text'
+											placeholder='John Doe'
+											disabled={isPending}
+										/>
 									</FormControl>
 									<FormMessage />
 								</FormItem>
@@ -107,7 +112,12 @@ export function RegisterForm({}: RegisterFormProps) {
 								<FormItem>
 									<FormLabel>Password</FormLabel>
 									<FormControl>
-										<Input {...field} type='password' placeholder='******' disabled={isPending} />
+										<Input
+											{...field}
+											type='password'
+											placeholder='******'
+											disabled={isPending}
+										/>
 									</FormControl>
 									<FormMessage />
 								</FormItem>
@@ -117,7 +127,9 @@ export function RegisterForm({}: RegisterFormProps) {
 					<FormError message={error} />
 					<FormSuccess message={success} />
 					<Button variant={'default'} className='w-full' disabled={isPending}>
-						<LoaderIcon className={!isPending ? 'hidden' : 'animate-spin mr-2'} />
+						<LoaderIcon
+							className={!isPending ? 'hidden' : 'animate-spin mr-2'}
+						/>
 						<span>Create a account</span>
 					</Button>
 				</form>
