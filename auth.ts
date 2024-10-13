@@ -3,9 +3,19 @@ import { getTwoFactorConfirmationByUserId } from '@/data/two-factor-confirmation
 import { getUserById } from '@/data/user'
 import { prisma } from '@/lib/prisma'
 import { PrismaAdapter } from '@auth/prisma-adapter'
-import type { UserRole } from '@prisma/client'
+import type { User as PrismaUser, UserRole } from '@prisma/client'
 import NextAuth from 'next-auth'
 import authConfig from './auth.config'
+
+// interface CustomUser extends PrismaUser {
+// 	id: string
+// 	surname?: string | null
+// 	client_id?: string | null
+// 	imageUrl?: string | null
+// 	role?: string
+// 	createdAt?: Date
+// 	updatedAt?: Date
+// }
 
 async function isOAuthAccount(userId: string): Promise<boolean> {
 	const account = await getAccountByUserId(userId)
@@ -75,6 +85,10 @@ export const {
 			if (session.user) {
 				session.user.email = token.email as string
 				session.user.email = token.email as string
+				session.user.surname = token.surname as string
+				session.user.client_id = token.client_id as string
+				session.user.imageUrl = token.imageUrl as string
+				session.user.shortname = token.shortname as string
 				session.user.isOAuth = token.isOAuth as boolean
 			}
 
@@ -91,6 +105,10 @@ export const {
 			token.name = existingUser.name
 			token.email = existingUser.email
 			token.role = existingUser.role
+			token.surname = existingUser.surname
+			token.client_id = existingUser.client_id
+			token.imageUrl = existingUser.imageUrl
+			token.shortname = existingUser.shortname
 			token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled
 
 			return token

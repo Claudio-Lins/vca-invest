@@ -23,6 +23,10 @@ model User {
   id                    String                 @id @default(cuid())
   name                  String?
   email                 String?                @unique
+  surname               String?
+  shortname             String?
+  client_id             String?                @unique
+  imageUrl              String?
   emailVerified         DateTime?              @map("email_verified")
   image                 String?
   password              String?
